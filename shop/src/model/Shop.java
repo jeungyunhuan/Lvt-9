@@ -13,7 +13,7 @@ public class Shop {
 	public void mainMenu() {
 		boolean run = true;
 		while (run) {
-			System.out.println("[1.가입] [2.탈퇴] [3.로그인] [4.로그아웃]" + "\n[100.관리자] [0.종료] ");
+			System.out.println("[1.가입] [2.탈퇴] [3.로그인]" + "\n[100.관리자] [0.종료] ");
 			int sel = scan.nextInt();
 			if (sel == 1) {
 				um.join();
@@ -21,9 +21,7 @@ public class Shop {
 				if (um.logIn()) {
 					loginMenu();
 				}
-			} else if (sel == 4) {
-				um.logOut();
-			} else if (sel == 100) {
+			}else if (sel == 100) {
 				managerMenu();
 			}
 		}
