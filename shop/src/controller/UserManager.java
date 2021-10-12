@@ -17,19 +17,19 @@ public class UserManager {
 	}
 
 	void init() {
-		String[] a = { "김", "박", "이", "최", "정", "오" };
-		String[] b = { "철", "병", "만", "여", "아", "영" };
-		String[] c = { "수", "욱", "수", "정", "름", "희" };
-		for (int i = 0; i < 10; i++) {
-			int r = ran.nextInt(a.length);
-			String name = a[r];
-			r = ran.nextInt(b.length);
-			name += b[r];
-			r = ran.nextInt(c.length);
-			name += c[r];
-			User temp = new User(name, ran.nextInt(5000));
-			userList.add(temp);
-		}
+//		String[] a = { "김", "박", "이", "최", "정", "오" };
+//		String[] b = { "철", "병", "만", "여", "아", "영" };
+//		String[] c = { "수", "욱", "수", "정", "름", "희" };
+//		for (int i = 0; i < 10; i++) {
+//			int r = ran.nextInt(a.length);
+//			String name = a[r];
+//			r = ran.nextInt(b.length);
+//			name += b[r];
+//			r = ran.nextInt(c.length);
+//			name += c[r];
+//			User temp = new User(name, ran.nextInt(5000));
+//			userList.add(temp);
+//		}
 	}
 
 	public void join() {
@@ -62,9 +62,12 @@ public class UserManager {
 	public void logOut() {
 		if (userLog != -1) {
 			System.out.println("[메세지] " + userList.get(userLog).id + "님 로그아웃.");
+			userLog = -1;
+		} else {
+			System.out.println("로그인을 해주십시오");
 		}
-		userLog = -1;
 	}
+	
 
 	public void printUser() {
 		for (int i = 0; i < userList.size(); i++) {

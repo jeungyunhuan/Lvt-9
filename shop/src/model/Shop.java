@@ -9,6 +9,7 @@ public class Shop {
 	Scanner scan = new Scanner(System.in);
 	ItemManager im = new ItemManager();
 	UserManager um = new UserManager();
+	Cart ct = new Cart();
 
 	public void mainMenu() {
 		boolean run = true;
@@ -21,7 +22,7 @@ public class Shop {
 				if (um.logIn()) {
 					loginMenu();
 				}
-			}else if (sel == 100) {
+			} else if (sel == 100) {
 				managerMenu();
 			}
 		}
@@ -37,6 +38,7 @@ public class Shop {
 			} else if (sel == 2) {
 				cartMenu();
 			} else if (sel == 0) {
+				um.logOut();
 				break;
 			}
 		}
@@ -49,7 +51,12 @@ public class Shop {
 			int sel = scan.nextInt();
 			if (sel == 1) {
 				im.printJang(um.userList.get(um.userLog));
-			} else if (sel == 0) {
+			} else if(sel==2) {
+				
+			}else if(sel==3) {
+				
+			}
+			else if (sel == 0) {
 				break;
 			}
 		}
@@ -80,6 +87,7 @@ public class Shop {
 			} else if (sel == 2) {
 				categoryMenu();
 			} else if (sel == 3) {
+				im.printCart();
 
 			} else if (sel == 4) {
 				userMenu();
@@ -88,6 +96,7 @@ public class Shop {
 			}
 		}
 	}
+	
 
 	void categoryMenu() {
 		boolean run = true;

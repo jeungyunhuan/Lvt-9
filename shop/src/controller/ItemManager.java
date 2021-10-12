@@ -94,6 +94,7 @@ public class ItemManager {
 		int n = 0;
 		Cart temp = new Cart();
 		temp.userId = usID;
+		temp.index++;
 		for (int i = 0; i < itemList.size(); i++) {
 			if (category.get(caID).equals(itemList.get(i).category)) {
 				if (itemID == n) {
@@ -103,5 +104,11 @@ public class ItemManager {
 			}
 		}
 		jangList.add(temp);
+	}
+	public void printCart() {
+		for (int i = 0; i < jangList.size(); i++) {
+			System.out.print("[" + i + "] ");
+			jangList.get(i).print();
+		}
 	}
 }
