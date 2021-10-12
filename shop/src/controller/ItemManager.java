@@ -12,9 +12,11 @@ public class ItemManager {
 	Vector<String> category = new Vector<String>();
 	Vector<Item> itemList = new Vector<Item>(); // 전체 아이템리스트
 	Vector<Cart> jangList = new Vector<Cart>(); // 전체 장바구니
+
 	public ItemManager() {
 		init();
 	}
+
 	void init() {
 		category.add("과자");
 		category.add("생선");
@@ -105,10 +107,61 @@ public class ItemManager {
 		}
 		jangList.add(temp);
 	}
+
 	public void printCart() {
 		for (int i = 0; i < jangList.size(); i++) {
-			System.out.print("[" + i + "] ");
-			jangList.get(i).print();
+			if (i < jangList.size() - 1) {
+				if (jangList.get(i).userId.equals(jangList.get(i + 1).userId)) {
+					jangList.get(i).print();
+				} else {
+					jangList.get(i).print();
+					System.out.println("--------------");
+				}
+			} else {
+				jangList.get(i).print();
+			}
 		}
+	}
+
+	public void itemRemove() {
+		System.out.println("삭제할 아이템 카테고리");
+		printCategory();
+		int sel = scan.nextInt();
+		System.out.println("삭제할 아이템");
+		printItemList(sel);
+		sel = scan.nextInt();
+		itemList.remove(sel);
+	}
+
+	public void categoryRemove() {
+		System.out.println("삭제할 카테고리 입력:");
+		printCategory();
+		int sel = scan.nextInt();
+		category.remove(sel);
+	}
+
+	public void categoryAdd() {
+		System.out.println("추가할 카테고리 입력:");
+		printCategory();
+		String name = scan.next();
+		category.add(name);
+	}
+
+	public void cartArr() {
+//		 String[] id = new String[jangList.size()];
+//		 String[] item = new String[jangList.size()];
+//		 for(int i =0; i<jangList.size();i++) {
+//			 id[i]=jangList.get(i).userId;
+//			 item[i]=jangList.get(i).itemName;
+//		 }
+//		while(true) {
+//			int a = 0;
+//			for (int i = 0; i < jangList.size(); i++) {
+//				if(id[i]!=id[i+1]) {
+//					id[i]
+//				}
+//			}	
+//		}
+//		
 	}
 }

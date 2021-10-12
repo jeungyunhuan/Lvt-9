@@ -18,12 +18,17 @@ public class Shop {
 			int sel = scan.nextInt();
 			if (sel == 1) {
 				um.join();
+			}else if (sel == 2) {
+				um.userRemove();
 			} else if (sel == 3) {
 				if (um.logIn()) {
 					loginMenu();
 				}
 			} else if (sel == 100) {
 				managerMenu();
+			}else {
+				System.out.println("Á¾·á");
+				break;
 			}
 		}
 	}
@@ -51,12 +56,11 @@ public class Shop {
 			int sel = scan.nextInt();
 			if (sel == 1) {
 				im.printJang(um.userList.get(um.userLog));
-			} else if(sel==2) {
-				
-			}else if(sel==3) {
-				
-			}
-			else if (sel == 0) {
+			} else if (sel == 2) {
+
+			} else if (sel == 3) {
+
+			} else if (sel == 0) {
 				break;
 			}
 		}
@@ -96,7 +100,6 @@ public class Shop {
 			}
 		}
 	}
-	
 
 	void categoryMenu() {
 		boolean run = true;
@@ -106,6 +109,10 @@ public class Shop {
 			if (sel == 1) {
 				im.printCategory();
 			} else if (sel == 2) {
+				im.categoryAdd();
+
+			} else if (sel == 3) {
+				im.categoryRemove();
 
 			} else if (sel == 0) {
 				run = false;
@@ -122,6 +129,8 @@ public class Shop {
 				im.printItemList();
 			} else if (sel == 2) {
 				im.addItem();
+			} else if (sel == 3) {
+				im.itemRemove();
 			} else if (sel == 0) {
 				run = false;
 			}
@@ -135,6 +144,10 @@ public class Shop {
 			int sel = scan.nextInt();
 			if (sel == 1) {
 				um.printUser();
+			}else if (sel == 2) {
+				um.join();
+			}else if (sel == 3) {
+				um.adminRemove();
 			} else if (sel == 0) {
 				run = false;
 			}

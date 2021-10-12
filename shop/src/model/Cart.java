@@ -7,7 +7,7 @@ public class Cart {
 
 	public void print() {
 		
-		System.out.println("[" + userId + "]" + index + " 아이템 : " + itemName);
+		System.out.println("[" + userId + "]" +" 아이템 : " + itemName);
 	}
 	
 	

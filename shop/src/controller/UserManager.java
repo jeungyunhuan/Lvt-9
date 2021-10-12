@@ -67,12 +67,36 @@ public class UserManager {
 			System.out.println("로그인을 해주십시오");
 		}
 	}
-	
 
 	public void printUser() {
 		for (int i = 0; i < userList.size(); i++) {
 			System.out.print("[" + i + "] ");
 			userList.get(i).print();
 		}
+	}
+
+	public void adminRemove() {
+		for(int i =0; i<userList.size();i++) {
+			userList.get(i).user();
+		}
+		userRemove();
+
+	}
+
+	public void userRemove() {
+		System.out.println("삭제하실 id입력:");
+		String id = scan.next();
+		int x = 0;
+		for (int i = 0; i < userList.size(); i++) {
+			if (userList.get(i).id.equals(id)) {
+				userList.remove(i);
+				x++;
+			} 
+		}
+		if (x == 0) {
+			System.out.println("해당아이디 없음");
+		}
+		else {
+		System.out.println("탈퇴성공");}
 	}
 }
