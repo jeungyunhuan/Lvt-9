@@ -15,6 +15,7 @@ public class ItemManager {
 
 	public ItemManager() {
 		init();
+		
 	}
 
 	void init() {
@@ -35,6 +36,28 @@ public class ItemManager {
 		temp = new Item("새우", 1800, category.get(1));
 		itemList.add(temp);
 	}
+	public int categorySize() {
+		return category.size();
+	}
+	public int itemSize(int category) {
+		return this.category.get(category).length();
+		
+	}
+
+	public void purchase() {
+		System.out.println("현재 구입한 품목\n------------");
+		printJang();
+		int fee = 0;
+		for (int i = 0; i < itemList.size(); i++) {
+			for (int j = 0; j < jangList.size(); j++) {
+				if (jangList.get(j).itemName.equals(itemList.get(i).name)) {
+					fee += itemList.get(i).price;
+				}
+			}
+		}
+		System.out.printf("현재 요금은 %d원입니다", fee);
+		System.out.println();
+	}
 
 	void printJang() {
 		for (int i = 0; i < jangList.size(); i++) {
@@ -45,9 +68,14 @@ public class ItemManager {
 	public void printJang(User u) {
 		for (int i = 0; i < jangList.size(); i++) {
 			if (u.id.equals(jangList.get(i).userId)) {
+				System.out.print("index:" + i + " ");
 				jangList.get(i).print();
 			}
 		}
+	}
+
+	public void removeItem(int index) {
+		jangList.remove(index);
 	}
 
 	public void printCategory() {

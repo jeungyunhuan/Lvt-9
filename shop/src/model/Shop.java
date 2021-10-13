@@ -1,7 +1,9 @@
 package model;
 
 import java.util.Scanner;
+import java.util.Vector;
 
+import model.Item;
 import controller.ItemManager;
 import controller.UserManager;
 
@@ -9,6 +11,7 @@ public class Shop {
 	Scanner scan = new Scanner(System.in);
 	ItemManager im = new ItemManager();
 	UserManager um = new UserManager();
+
 	Cart ct = new Cart();
 
 	public void mainMenu() {
@@ -18,7 +21,7 @@ public class Shop {
 			int sel = scan.nextInt();
 			if (sel == 1) {
 				um.join();
-			}else if (sel == 2) {
+			} else if (sel == 2) {
 				um.userRemove();
 			} else if (sel == 3) {
 				if (um.logIn()) {
@@ -26,7 +29,7 @@ public class Shop {
 				}
 			} else if (sel == 100) {
 				managerMenu();
-			}else {
+			} else {
 				System.out.println("종료");
 				break;
 			}
@@ -57,8 +60,12 @@ public class Shop {
 			if (sel == 1) {
 				im.printJang(um.userList.get(um.userLog));
 			} else if (sel == 2) {
-
+				im.printJang(um.userList.get(um.userLog));
+				System.out.println("지우고 싶은 품목 선택:");
+				int index = scan.nextInt();
+				im.removeItem(index);
 			} else if (sel == 3) {
+				im.purchase();
 
 			} else if (sel == 0) {
 				break;
@@ -71,13 +78,22 @@ public class Shop {
 		while (run) {
 			im.printCategory();
 			System.out.println("[카테고리] 번호를 입력하세요.[종료.-1]");
+
 			int caID = scan.nextInt();
-			if (caID == -1)
-				break;
-			System.out.println("[아이템] 번호를 입력하세요. ");
-			im.printItemList(caID);
-			int itID = scan.nextInt();
-			im.addCart(um.userList.get(um.userLog).id, caID, itID);
+			if (caID < im.categorySize()) {
+				if (caID == -1)
+					break;
+				System.out.println("[아이템] 번호를 입력하세요. ");
+				im.printItemList(caID);
+				int itID = scan.nextInt();
+				if (itID < im.itemSize(caID)) {
+					im.addCart(um.userList.get(um.userLog).id, caID, itID);
+				} else {
+					System.out.println("아이템 초과");
+				}
+			} else {
+				System.out.println("카테고리 초과");
+			}
 		}
 	}
 
@@ -144,9 +160,9 @@ public class Shop {
 			int sel = scan.nextInt();
 			if (sel == 1) {
 				um.printUser();
-			}else if (sel == 2) {
+			} else if (sel == 2) {
 				um.join();
-			}else if (sel == 3) {
+			} else if (sel == 3) {
 				um.adminRemove();
 			} else if (sel == 0) {
 				run = false;

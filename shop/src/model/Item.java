@@ -2,7 +2,7 @@ package model;
 
 public class Item {
 	public String name;
-	int price;
+	public int price;
 	public String category; // 카테고리 // 육류 , 과자 , 어류 , 과일 등등
 
 	public Item(String na, int pr, String cate) {
