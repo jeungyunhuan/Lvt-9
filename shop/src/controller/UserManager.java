@@ -35,9 +35,19 @@ public class UserManager {
 	public void join() {
 		System.out.println("[가입] id 를 입력하세요.");
 		String id = scan.next();
+		int index=0;
+		for(int i=0; i<userList.size();i++) {
+			if(id.equals(userList.get(i).id)) {
+				index++;
+			}	
+		}
+		if(index==0) {
 		User temp = new User(id, 0);
 		userList.add(temp);
 		System.out.println("[메세지] " + temp.id + "님 가입을 축하합니다.");
+		}else {
+			System.out.println("중복아이디");
+		}
 	}
 
 	public boolean logIn() {
