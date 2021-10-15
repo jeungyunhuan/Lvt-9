@@ -65,7 +65,7 @@ public class Shop {
 				int index = scan.nextInt();
 				im.removeItem(index);
 			} else if (sel == 3) {
-				im.purchase();
+				im.purchase(um.userList.get(um.userLog));
 
 			} else if (sel == 0) {
 				break;
