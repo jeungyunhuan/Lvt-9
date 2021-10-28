@@ -9,14 +9,7 @@ public abstract class Unit {
 	private int att;
 	private int def;
 	private int pos;
-//	private int money;
-	
-//	public int getMoney() {
-//		return money;
-//	}
-//	public void setMoney(int mon) {
-//		this.money=mon;
-//	}
+
 	
 	public String getname() {
 		return name;
